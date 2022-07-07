@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 
 const userMovieRoutes = require("./routes/user-movie-routes");
 const checkAuth = require("./middlewares/check-auth");
+const errorHandling = require("./middlewares/error-handling");
 
 app.use(bodyParser.json());
 
@@ -18,6 +19,8 @@ app.use("/api/user-movie", userMovieRoutes);
 app.get("/", (req, res, next) => {
     res.json({ message: "Hello, world!" });
 });
+
+app.use(errorHandling);
 
 mongoose
     .connect(process.env.MONGO_URL)

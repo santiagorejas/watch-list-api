@@ -6,7 +6,14 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
+const userMovieRoutes = require("./routes/user-movie-routes");
+const checkAuth = require("./middlewares/check-auth");
+
 app.use(bodyParser.json());
+
+app.use(checkAuth.authenticated);
+
+app.use("/api/user-movie", userMovieRoutes);
 
 app.get("/", (req, res, next) => {
     res.json({ message: "Hello, world!" });

@@ -8,4 +8,6 @@ router.post("/", userMovieControllers.addUserMovieRelation);
 
 router.delete("/", userMovieControllers.removeUserMovieRelation);
 
+router.get("/", userMovieControllers.getUserMovieRelation);
+
 module.exports = router;

@@ -80,5 +80,23 @@ const removeUserMovieRelation = async (req, res, next) => {
     });
 };
 
+const getUserMovieRelation = async (req, res, next) => {
+    const { relation_type } = req.query;
+
+    let relations;
+    try {
+        relations = await UserMovie.find({ user: req.auth.sub, relation_type });
+    } catch (err) {
+        const error = new Error("Fetching relations failed.");
+        error.status = 500;
+        return next(error);
+    }
+
+    res.json({
+        relations,
+    });
+};
+
 exports.addUserMovieRelation = addUserMovieRelation;
 exports.removeUserMovieRelation = removeUserMovieRelation;
+exports.getUserMovieRelation = getUserMovieRelation;

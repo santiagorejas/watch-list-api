@@ -7,7 +7,7 @@ const userMovieSchema = new Schema({
         required: true,
     },
     movie: {
-        type: String,
+        type: Number,
         required: true,
     },
     relation_type: {

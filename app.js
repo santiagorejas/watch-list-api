@@ -6,13 +6,12 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const userMovieRoutes = require("./routes/user-movie-routes");
-const checkAuth = require("./middlewares/check-auth");
+
 const errorHandling = require("./middlewares/error-handling");
 const cors = require("./middlewares/cors");
 
 app.use(bodyParser.json());
 app.use(cors);
-app.use(checkAuth.authenticated);
 
 app.use("/api/user-movie", userMovieRoutes);
 

@@ -42,7 +42,7 @@ const addUserMovieRelation = async (req, res, next) => {
 };
 
 const removeUserMovieRelation = async (req, res, next) => {
-    const { movie, relation_type } = req.body;
+    const { movie, relation_type } = req.query;
 
     let relation;
     try {
